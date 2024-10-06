@@ -931,48 +931,6 @@ def get_named_platform() -> str:
 
     return f"✌️ lavHost {os.environ['LAVHOST']}" if main.IS_LAVHOST else "VDS"
 
-def get_named_platform() -> str:
-    """
-    Returns formatted platform name
-    :return: Platform name
-    """
-    from . import main
-
-    with contextlib.suppress(Exception):
-        if os.path.isfile("/proc/device-tree/model"):
-            with open("/proc/device-tree/model") as f:
-                model = f.read()
-                if "Orange" in model:
-                    return f"🍊 {model}"
-
-                return f"🍇 {model}" if "Raspberry" in model else f"❓ {model}"
-
-    if main.IS_WSL:
-        return "🍀 WSL"
-
-    if main.IS_ORACLE:  # Добавляем проверку для Oracle
-        return "🟠 Oracle"  # Или любой другой эмодзи, который вам нравится
-
-    if main.IS_GOORM:
-        return "🦾 GoormIDE"
-
-    if main.IS_RAILWAY:
-        return "🚂 Railway"
-
-    if main.IS_HIKKAHOST:
-        return "🌼 HikkaHost"
-
-    if main.IS_DOCKER:
-        return "🐳 Docker"
-
-    if main.IS_TERMUX:
-        return "🕶 Termux"
-
-    if main.IS_CODESPACES:
-        return "🐈‍⬛ Codespaces"
-
-    return f"✌️ lavHost {os.environ['LAVHOST']}" if main.IS_LAVHOST else "WhoHost"
-
 
 def get_platform_emoji() -> str:
     """
