@@ -826,7 +826,7 @@ class Hikka:
 
             await client.hikka_inline.bot.send_animation(
                 logging.getLogger().handlers[0].get_logid_by_client(client.tg_id),
-                "https://x0.at/WO4-.mp4",
+                "https://i.gifer.com/3Oq80.gif",
                 caption=(
                     "🌘 <b>Hikka {} started!</b>\n\n🌳 <b>GitHub commit SHA: <a"
                     ' href="https://github.com/psleiny/leiny/commit/{}">{}</a></b>\n✊'
