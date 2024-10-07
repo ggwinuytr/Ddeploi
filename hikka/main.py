@@ -93,6 +93,7 @@ IS_GOORM = "GOORM" in os.environ
 IS_LAVHOST = "LAVHOST" in os.environ
 IS_HIKKAHOST = "HIKKAHOST" in os.environ
 IS_ORACLE = "ORACLE_OS" in os.environ
+IS_AWS = "AWS_OS" in os.environ
 IS_WSL = False
 with contextlib.suppress(Exception):
     from platform import uname
