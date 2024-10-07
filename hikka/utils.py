@@ -911,6 +911,9 @@ def get_named_platform() -> str:
     if main.IS_ORACLE:
         return "☁️ Oracle"
 
+    if main.IS_AWS:
+        return "☁️ AWS"
+
     if main.IS_GOORM:
         return "🦾 GoormIDE"
 
@@ -949,6 +952,9 @@ def get_platform_emoji() -> str:
 
     if main.IS_ORACLE:
         return BASE.format(5195381467047288408)
+        
+    if main.IS_AWS:
+        return BASE.format(5197529358717179346)
 
     if main.IS_DOCKER:
         return BASE.format(5298554256603752468)
