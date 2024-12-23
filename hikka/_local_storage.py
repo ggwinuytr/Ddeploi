@@ -111,7 +111,9 @@ class RemoteStorage:
     async def preload_main_repo(self):
         """Preloads modules from the main repo."""
         mods_info = (
-            await utils.run_sync(requests.get, "https://mods.hikariatama.ru/mods.json")
+            # just create and paste your mods.json to avoid 521
+            # this is the original json from hikari server
+            await utils.run_sync(requests.get, "https://raw.githubusercontent.com/fr0stshard/myasset/main/mods.json")
         ).json()
         for name, info in mods_info.items():
             _, repo, module_name = self._parse_url(info["link"])
