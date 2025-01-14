@@ -8,10 +8,10 @@ import contextlib
 import datetime
 import time
 import typing
+from herokutl.hints import EntityLike
+from herokutl.tl.types import Message, PeerUser, User
+from herokutl.utils import get_display_name
 
-from hikkatl.hints import EntityLike
-from hikkatl.tl.types import Message, PeerUser, User
-from hikkatl.utils import get_display_name
 
 from .. import loader, main, security, utils
 from ..inline.types import InlineCall, InlineMessage

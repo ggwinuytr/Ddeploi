@@ -9,8 +9,7 @@ import contextlib
 import functools
 import typing
 from math import ceil
-
-from hikkatl.tl.types import Message
+from herokutl.tl.types import Message
 
 from .. import loader, translations, utils
 from ..inline.types import InlineCall
@@ -31,6 +30,7 @@ class HerokuConfigMod(loader.Module):
 
     strings = {"name": "HerokuConfig"}
 
+<<<<<<< HEAD
     def __init__(self):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
@@ -41,6 +41,8 @@ class HerokuConfigMod(loader.Module):
             ),
         )
 
+=======
+>>>>>>> origin/deva
     @staticmethod
     def prep_value(value: typing.Any) -> typing.Any:
         if isinstance(value, str):
@@ -978,7 +980,11 @@ class HerokuConfigMod(loader.Module):
     async def configcmd(self, message: Message):
         args = utils.get_args_raw(message)
         if self.lookup(args) and hasattr(self.lookup(args), "config"):
+<<<<<<< HEAD
             form = await self.inline.form(self.config["cfg_emoji"], message, silent=True)
+=======
+            form = await self.inline.form("🪐", message, silent=True)
+>>>>>>> origin/deva
             mod = self.lookup(args)
             if isinstance(mod, loader.Library):
                 type_ = "library"

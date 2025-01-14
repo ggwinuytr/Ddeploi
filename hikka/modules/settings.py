@@ -4,9 +4,10 @@
 # You can redistribute it and/or modify it under the terms of the GNU AGPLv3
 # 🔑 https://www.gnu.org/licenses/agpl-3.0.html
 
-import hikkatl
-from hikkatl.extensions.html import CUSTOM_EMOJIS
-from hikkatl.tl.types import Message
+
+import herokutl
+from herokutl.extensions.html import CUSTOM_EMOJIS
+from herokutl.tl.types import Message
 
 from .. import loader, main, utils, version
 from ..inline.types import InlineCall
@@ -99,7 +100,8 @@ class CoreMod(loader.Module):
                 ),
                 *version.__version__,
                 utils.get_commit_url(),
-                f"{hikkatl.__version__} #{hikkatl.tl.alltlobjects.LAYER}",
+                f"{herokutl.__version__} #{herokutl.tl.alltlobjects.LAYER}",
+>>>>>>> origin/deva
             )
             + (
                 ""

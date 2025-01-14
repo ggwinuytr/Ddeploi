@@ -6,8 +6,8 @@
 
 import git
 import time
-from hikkatl.tl.types import Message
-from hikkatl.utils import get_display_name
+from herokutl.tl.types import Message
+from herokutl.utils import get_display_name
 import requests
 import os
 from .. import loader, utils, version
@@ -32,7 +32,11 @@ class HerokuInfoMod(loader.Module):
                 "https://imgur.com/a/7LBPJiq.png",
                 lambda: self.strings("_cfg_banner"),
             ),
-
+            loader.ConfigValue(
+                "pp_to_banner",
+                False,
+                validator=loader.validators.Boolean(),
+            ),
             loader.ConfigValue(
                 "show_heroku",
                 True,
@@ -45,7 +49,7 @@ class HerokuInfoMod(loader.Module):
             repo = git.Repo(search_parent_directories=True)
             diff = repo.git.log([f"HEAD..origin/{version.branch}", "--oneline"])
             upd = (
-                self.strings("update_required").format(prefix=self.get_prefix()) if diff else self.strings("up-to-date")
+                self.strings("update_required") if diff else self.strings("up-to-date")
             )
         except Exception:
             upd = ""
@@ -74,7 +78,7 @@ class HerokuInfoMod(loader.Module):
             ("✌️", "<emoji document_id=5469986291380657759>✌️</emoji>"),
             ("💎", "<emoji document_id=5471952986970267163>💎</emoji>"),
             ("🛡", "<emoji document_id=5282731554135615450>🌩</emoji>"),
-            ("💘", "<emoji document_id=5449538944221863995>💘</emoji>"),
+            ("💘", "<emoji document_id=5452140079495518256>💘</emoji>"),
             ("🌼", "<emoji document_id=5224219153077914783>❤️</emoji>"),
             ("🎡", "<emoji document_id=5226711870492126219>🎡</emoji>"),
             ("🐧", "<emoji document_id=5361541227604878624>🐧</emoji>")
@@ -134,6 +138,37 @@ class HerokuInfoMod(loader.Module):
                 )
             )
         )
+
+    async def upload_pp_to_oxo(self, photo):
+        save_path = "profile_photo.jpg"
+        await self._client.download_media(photo, file=save_path)
+
+        try:
+            with open(save_path, 'rb') as file:
+                oxo = await utils.run_sync(
+                    requests.post,
+                    "https://0x0.st",
+                    files={"file": file},
+                    data={"secret": True},
+                )
+
+            if oxo.status_code == 200:
+                return oxo.text.strip()
+            else:
+                return "https://imgur.com/a/7LBPJiq.png"
+
+        except Exception:
+            return "https://imgur.com/H56KRbM"
+
+        finally:
+            if os.path.exists(save_path):
+                os.remove(save_path)
+
+    async def get_pp_for_banner(self):
+        photos = await self._client.get_profile_photos('me')
+        if photos:
+            return await self.upload_pp_to_oxo(photos[0])
+        return "https://imgur.com/a/7LBPJiq.png"
 
     async def info(self, _: InlineQuery) -> dict:
         """Send userbot info"""

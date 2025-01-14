@@ -5,8 +5,7 @@
 # 🔑 https://www.gnu.org/licenses/agpl-3.0.html
 
 import logging
-
-from hikkatl.tl.types import Message
+from herokutl.tl.types import Message
 
 from .. import loader, translations, utils
 from ..inline.types import InlineCall

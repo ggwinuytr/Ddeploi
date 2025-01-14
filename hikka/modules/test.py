@@ -13,7 +13,7 @@ import time
 import typing
 from io import BytesIO
 
-from hikkatl.tl.types import Message
+from herokutl.tl.types import Message
 
 from .. import loader, main, utils
 from ..inline.types import InlineCall
@@ -399,7 +399,6 @@ class TestMod(loader.Module):
                     user=subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode().strip(),
         ),
             )
-
 
     async def client_ready(self):
         chat, _ = await utils.asset_channel(

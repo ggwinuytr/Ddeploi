@@ -3,7 +3,7 @@ import logging
 import re
 from pathlib import Path
 
-from hikkatl.sessions import SQLiteSession
+from herokutl.sessions import SQLiteSession
 
 from ..tl_cache import CustomTelegramClient
 from .customtl import ConnectionTcpFull, MTProtoState
@@ -16,7 +16,7 @@ def patch(client: CustomTelegramClient, session: SQLiteSession):
     client.connect = functools.partial(
         client.connect,
         unix_socket_path=(
-            Path(__file__).parent.parent.parent / f"hikka-{session_id}-proxy.sock"
+            Path(__file__).parent.parent.parent / f"heroku-{session_id}-proxy.sock"
         ),
     )
 

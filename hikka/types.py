@@ -23,9 +23,9 @@ from dataclasses import dataclass, field
 from importlib.abc import SourceLoader
 
 import requests
-from hikkatl.hints import EntityLike
-from hikkatl.tl.functions.account import UpdateNotifySettingsRequest
-from hikkatl.tl.types import (
+from herokutl.hints import EntityLike
+from herokutl.tl.functions.account import UpdateNotifySettingsRequest
+from herokutl.tl.types import (
     Channel,
     ChannelFull,
     InputPeerNotifySettings,
