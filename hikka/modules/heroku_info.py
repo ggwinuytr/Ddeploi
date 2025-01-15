@@ -10,8 +10,6 @@ import time
 import psutil
 from hikkatl.tl.types import Message
 from hikkatl.utils import get_display_name
-import requests
-import os
 from .. import loader, utils, version
 from ..inline.types import InlineQuery
 import subprocess
@@ -49,7 +47,7 @@ class HerokuInfoMod(loader.Module):
             ),
         )
 
-    def _render_info(self, inline: bool) -> str:
+    def _render_info(self, inline: bool, start: float) -> str:
         try:
             repo = git.Repo(search_parent_directories=True)
             diff = repo.git.log([f"HEAD..origin/{version.branch}", "--oneline"])
@@ -89,6 +87,10 @@ class HerokuInfoMod(loader.Module):
             ("🐧", "<emoji document_id=5361541227604878624>🐧</emoji>")
         ]:
             platform = platform.replace(emoji, icon)
+
+        try: os = lib_platform.freedesktop_os_release()["PRETTY_NAME"]
+        except Exception: os = self.strings('non_detectable')
+
         return (
             (
                 "<b>🪐 Heroku</b>\n"
@@ -108,9 +110,10 @@ class HerokuInfoMod(loader.Module):
                 branch=version.branch,
                 hostname=lib_platform.node(),
                 user=subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode().strip(),
-                os=lib_platform.freedesktop_os_release()["PRETTY_NAME"] or self.strings('non_detectable'),
+                os=os,
                 kernel=lib_platform.release(),
                 cpu=f"{psutil.cpu_count(logical=False)} ({psutil.cpu_count()}) core(-s); {psutil.cpu_percent()}%",
+                ping=round((time.perf_counter_ns() - start) / 10**6, 3)
             )
             if self.config["custom_message"]
             else (
@@ -147,22 +150,6 @@ class HerokuInfoMod(loader.Module):
             )
         )
 
-    async def info(self, _: InlineQuery) -> dict:
-        """Send userbot info"""
-
-        return {
-            "title": self.strings("send_info"),
-            "description": self.strings("description"),
-            **(
-                {"photo": self.config["banner_url"], "caption": self._render_info(True)}
-                if self.config["banner_url"]
-                else {"message": self._render_info(True)}
-            ),
-            "thumb": (
-                "https://github.com/hikariatama/Hikka/raw/master/assets/hikka_pfp.png"
-            ),
-            "reply_markup": self._get_mark(),
-        }
 
     @loader.command()
     async def infocmd(self, message: Message):
@@ -181,7 +168,7 @@ class HerokuInfoMod(loader.Module):
         await utils.answer_file(
             message,
             self.config["banner_url"],
-            self._render_info(False).format(ping=round((time.perf_counter_ns() - start) / 10**6, 3)),
+            self._render_info(False, start),
         )
 
     @loader.command()
