@@ -88,7 +88,7 @@ class HerokuInfoMod(loader.Module):
         ]:
             platform = platform.replace(emoji, icon)
 
-        try: os = lib_platform.freedesktop_os_release()["PRETTY_NAME"]
+        try: os = lib_platform.freedesktop_os_release()["PRETTY_NAME"] or self.strings('non_detectable')
         except Exception: os = self.strings('non_detectable')
 
         return (
