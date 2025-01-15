@@ -11,7 +11,6 @@ import psutil
 from hikkatl.tl.types import Message
 from hikkatl.utils import get_display_name
 from .. import loader, utils, version
-from ..inline.types import InlineQuery
 import subprocess
 import platform as lib_platform
 
@@ -46,6 +45,16 @@ class HerokuInfoMod(loader.Module):
                 validator=loader.validators.String(),
             ),
         )
+
+    def _get_os_name(self):
+        try:
+            with open("/etc/os-release", "r") as f:
+                for line in f:
+                    if line.startswith("PRETTY_NAME"):
+                        return line.split("=")[1].strip().strip('"')
+        except FileNotFoundError:
+            return self.strings['non_detectable']
+
 
     def _render_info(self, inline: bool, start: float) -> str:
         try:
@@ -87,10 +96,6 @@ class HerokuInfoMod(loader.Module):
             ("🐧", "<emoji document_id=5361541227604878624>🐧</emoji>")
         ]:
             platform = platform.replace(emoji, icon)
-
-        try: os = lib_platform.freedesktop_os_release()["PRETTY_NAME"] or self.strings('non_detectable')
-        except Exception: os = self.strings('non_detectable')
-
         return (
             (
                 "<b>🪐 Heroku</b>\n"
@@ -110,9 +115,9 @@ class HerokuInfoMod(loader.Module):
                 branch=version.branch,
                 hostname=lib_platform.node(),
                 user=subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode().strip(),
-                os=os,
+                os=self._get_os_name() or self.strings('non_detectable'),
                 kernel=lib_platform.release(),
-                cpu=f"{psutil.cpu_count(logical=False)} ({psutil.cpu_count()}) core(-s); {psutil.cpu_percent()}%",
+                cpu=f"{psutil.cpu_count(logical=False)} ({psutil.cpu_count()}) core(-s); {psutil.cpu_percent()}% total",
                 ping=round((time.perf_counter_ns() - start) / 10**6, 3)
             )
             if self.config["custom_message"]
