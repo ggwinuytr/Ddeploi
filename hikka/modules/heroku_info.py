@@ -162,7 +162,6 @@ class HerokuInfoMod(loader.Module):
         message = await utils.answer(message, self.config["ping_emoji"])
 
         if self.config.get('pp_to_banner', True):
-            print(self.config['banner_url'])
             try:
                 new_banner_url = await self.get_pp_for_banner()
                 if new_banner_url:
