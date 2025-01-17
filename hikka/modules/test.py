@@ -367,6 +367,7 @@ class TestMod(loader.Module):
         """- Find out your userbot ping"""
         start = time.perf_counter_ns()
         message = await utils.answer(message, self.config["ping_emoji"])
+        banner = self.config["banner_url"]
         
         if self.config["banner_url"]:
             await message.delete()
