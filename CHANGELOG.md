@@ -1,4 +1,11 @@
 # Heroku Changelog
+## 🪐 Heroku 1.6.9
+
+- added new variables to info: {os}, {kernel}, {ping}, {cpu}
+- added banner to ping
+- added config for emoji in config (.cfg herokuconfig)
+- fixed close button in .update
+
 ## 🪐 Heroku 1.6.8
 
 - Finally renamed to Heroku and new Emoji
