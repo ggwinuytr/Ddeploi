@@ -978,7 +978,7 @@ class HerokuConfigMod(loader.Module):
     async def configcmd(self, message: Message):
         args = utils.get_args_raw(message)
         args_s = args.split()
-        if len(args_s) == 1:
+        if len(args_s) == 1 and self.lookup(args_s[0]) and hasattr(self.lookup(args_s[0]), 'config'):
             form = await self.inline.form(self.config["cfg_emoji"], message, silent=True)
             mod = self.lookup(args)
             if isinstance(mod, loader.Library):
@@ -989,7 +989,7 @@ class HerokuConfigMod(loader.Module):
             await self.inline__configure(form, args, obj_type=type_)
             return
 
-        if len(args_s) == 2:
+        if len(args_s) == 2 and self.lookup(args_s[0]) and hasattr(self.lookup(args_s[0]), 'config'):
             form = await self.inline.form(self.config["cfg_emoji"], message, silent=True)
             mod = self.lookup(args_s[0])
             if isinstance(mod, loader.Library):
