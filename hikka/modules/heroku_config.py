@@ -976,19 +976,31 @@ class HerokuConfigMod(loader.Module):
 
     @loader.command(alias="cfg")
     async def configcmd(self, message: Message):
-        args = utils.get_args_raw(message).split()
-        if self.lookup(args[0]) and hasattr(self.lookup(args[0]), "config"):
+        args = utils.get_args_raw(message)
+        args_s = args.split()
+        if len(args_s) == 1:
             form = await self.inline.form(self.config["cfg_emoji"], message, silent=True)
-            mod = self.lookup(args[0])
+            mod = self.lookup(args)
             if isinstance(mod, loader.Library):
                 type_ = "library"
             else:
                 type_ = mod.__origin__.startswith("<core")
 
-            if len(args) == 2 and self.lookup(args[0]).config:
-                await self.inline__configure_option(form, args[0], args[1], obj_type=type_)
+            await self.inline__configure(form, args, obj_type=type_)
+            return
+
+        if len(args_s) == 2:
+            form = await self.inline.form(self.config["cfg_emoji"], message, silent=True)
+            mod = self.lookup(args_s[0])
+            if isinstance(mod, loader.Library):
+                type_ = "library"
             else:
-                await self.inline__configure(form, args[0], obj_type=type_)
+                type_ = mod.__origin__.startswith("<core")
+
+            if args_s[1] in mod.config:
+                await self.inline__configure_option(form, args_s[0], args_s[1], obj_type=type_)
+            else:
+                await self.inline__configure(form, args, obj_type=type_)
             return
 
         await self.inline__choose_category(message)
