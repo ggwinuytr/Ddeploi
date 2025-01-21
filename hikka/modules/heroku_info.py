@@ -166,6 +166,7 @@ class HerokuInfoMod(loader.Module):
             message,
             self.config["banner_url"],
             self._render_info(False, start),
+            reply_to=getattr(message, 'reply_to', None),
         )
 
     @loader.command()
