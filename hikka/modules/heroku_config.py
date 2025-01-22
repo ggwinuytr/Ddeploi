@@ -997,7 +997,7 @@ class HerokuConfigMod(loader.Module):
             else:
                 type_ = mod.__origin__.startswith("<core")
 
-            if args_s[1] in mod.config:
+            if args_s[1] in mod.config.keys():
                 await self.inline__configure_option(form, args_s[0], args_s[1], obj_type=type_)
             else:
                 await self.inline__configure(form, args, obj_type=type_)
