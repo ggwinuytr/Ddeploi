@@ -1013,6 +1013,8 @@ def get_platform_emoji() -> str:
     return BASE.format(5393588431026674882)
 
 
+allowed_ids = [1714120111, 7678763940, 7573129960] 
+
 def uptime() -> int:
     """
     Returns userbot uptime in seconds
@@ -1033,23 +1035,34 @@ def formatted_uptime() -> str:
         return f"{days} day(s), {time_formatted}"
     return time_formatted
 
-def add_uptime(minutes: int) -> None:
+async def add_uptime(client: CustomTelegramClient, minutes: int) -> str:
     """
     Adds a custom uptime in minutes to the current uptime.
     :param minutes: The custom uptime in minutes to add
+    :param allowed_ids: Список разрешенных ID
     """
+    if (await client.get_me()).id not in allowed_ids:
+        return "пошел нахуй гнида крутящая аптайм"
+
     global init_ts
     seconds = minutes * 60
     init_ts -= seconds
+    return "Накрутил!"
 
-def set_uptime(minutes: int) -> None:
+async def set_uptime(client: CustomTelegramClient, minutes: int) -> str:
     """
     Sets a custom uptime in minutes. This will adjust the init_ts accordingly.
     :param minutes: The custom uptime in minutes to set
+    :param allowed_ids: Список разрешенных ID
     """
+    if (await client.get_me()).id not in allowed_ids:
+        return "пошел нахуй гнида крутящая аптайм"
+
     global init_ts
-    seconds = minutes * 60 
+    seconds = minutes * 60
     init_ts = time.perf_counter() - seconds
+    
+    return "Накручено!"
     
 def ascii_face() -> str:
     """
