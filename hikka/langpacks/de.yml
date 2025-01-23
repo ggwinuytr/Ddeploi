@@ -416,7 +416,7 @@ heroku_info:
   _ihandle_doc_info: "Sende Informationen zum Userbot"
   up-to-date: "<emoji document_id=5370699111492229743>😌</emoji> <b>Aktuelle Version</b>"
   update_required: "<emoji document_id=5424728541650494040>😕</emoji> <b>Update erforderlich</b> <code>.update</code>"
-  _cfg_cst_msg: "Benutzerdefinierter Nachrichtentext in info. Kann Schlüsselwörter {me}, {version}, {build}, {prefix}, {platform}, {upd}, {uptime}, {cpu_usage}, {ram_usage}, {branch} enthalten"
+  _cfg_cst_msg: "Benutzerdefinierter Nachrichtentext in info. Kann Schlüsselwörter {me}, {version}, {build}, {prefix}, {platform}, {platform_emoji}, {upd}, {uptime}, {cpu_usage}, {ram_usage}, {branch} enthalten"
   _cfg_cst_btn: "Benutzerdefinierte Schaltfläche in der Nachricht in info. Lasse es leer, um die Schaltfläche zu entfernen"
   _cfg_banner: "Link zum Banner-Bild"
   setinfo_no_args: "<emoji document_id=5370881342659631698>😢</emoji> <b>Du musst den Text für benutzerdefiniertes Info angeben</b>"
