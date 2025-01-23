@@ -1,6 +1,7 @@
 """Utilities"""
 
 #    еще пасхалочка
+#    есле че я добавил онли 1 функцию которая возвращает эмодзи платформы, и отдельно название, потому что сука тупые может я свое эмодзи хочу там
 #    Friendly Telegram (telegram userbot)
 #    Copyright (C) 2018-2021 The Authors
 
@@ -911,48 +912,108 @@ def get_named_platform() -> str:
                 return f"🍇 {model}" if "Raspberry" in model else f"❓ {model}"
 
     if main.IS_WSL:
-        return "🍀 WSL"
+        return "WSL"
 
     if main.IS_DJHOST:
-        return "🎡 DJHost"
+        return "DJHost"
 
     if main.IS_ORACLE:
-        return "😶‍🌫️ Oracle"
+        return "Oracle"
 
     if main.IS_AWS:
-        return "😶‍🌫️ AWS"
+        return "AWS"
 
     if main.IS_USERLAND:
-        return "🐧 UserLand"
+        return "UserLand"
 
     if main.IS_SERV00:
-        return "💎 Serv00"
+        return "Serv00"
 
     if main.IS_TOTHOST:
-        return "💘 ToTHost"
+        return "ToTHost"
 
     if main.IS_AEZA:
-        return "🛡 Aeza"
+        return "Aeza"
 
     if main.IS_GOORM:
-        return "🦾 GoormIDE"
+        return "GoormIDE"
 
     if main.IS_RAILWAY:
-        return "🚂 Railway"
+        return "Railway"
 
     if main.IS_HIKKAHOST:
-        return "🌼 HikkaHost"
+        return "HikkaHost"
 
     if main.IS_DOCKER:
-        return "🐳 Docker"
+        return "Docker"
 
     if main.IS_TERMUX:
-        return "🕶 Termux"
+        return "Termux"
 
     if main.IS_CODESPACES:
-        return "🐈‍⬛ Codespaces"
+        return "Codespaces"
 
-    return f"✌️ lavHost {os.environ['LAVHOST']}" if main.IS_LAVHOST else "💎 VDS"
+    return f"lavHost {os.environ['LAVHOST']}" if main.IS_LAVHOST else "VDS"
+
+def get_named_platform_emoji() -> str:
+    """
+    Returns formatted platform name
+    :return: Platform name
+    """
+    from . import main
+
+    with contextlib.suppress(Exception):
+        if os.path.isfile("/proc/device-tree/model"):
+            with open("/proc/device-tree/model") as f:
+                model = f.read()
+                if "Orange" in model:
+                    return f"🍊 "
+
+                return f"🍇 " if "Raspberry" in model else f"❓ "
+
+    if main.IS_WSL:
+        return "🍀 "
+
+    if main.IS_DJHOST:
+        return "🎡 "
+
+    if main.IS_ORACLE:
+        return "😶‍🌫️ "
+
+    if main.IS_AWS:
+        return "😶‍🌫️ "
+
+    if main.IS_USERLAND:
+        return "🐧 "
+
+    if main.IS_SERV00:
+        return "💎 "
+
+    if main.IS_TOTHOST:
+        return "💘 "
+
+    if main.IS_AEZA:
+        return "🛡 "
+
+    if main.IS_GOORM:
+        return "🦾 "
+
+    if main.IS_RAILWAY:
+        return "🚂 "
+
+    if main.IS_HIKKAHOST:
+        return "🌼 "
+
+    if main.IS_DOCKER:
+        return "🐳 "
+
+    if main.IS_TERMUX:
+        return "🕶 "
+
+    if main.IS_CODESPACES:
+        return "🐈‍⬛ "
+
+    return f"✌️ " if main.IS_LAVHOST else "💎 "
 
 
 def get_platform_emoji() -> str:
