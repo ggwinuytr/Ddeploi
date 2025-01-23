@@ -430,3 +430,34 @@ class UpdaterMod(loader.Module):
             inline_message_id=ms,
             text=self.inline.sanitise_text(msg),
         )
+
+    @loader.command()
+    async def rollback(self, message: Message):
+        if not (args := utils.get_args_raw(message)).isdigit():
+            await utils.answer(message, self.strings('invalid_args'))
+            return
+        form = await self.inline.form(
+            message=message,
+            text=self.strings('rollback_confirm'.format(num=args)),
+            reply_markup=[
+                [
+                    {
+                        "text": "✅",
+                        "callback": self.rollback_confirm,
+                        "args": [args],
+                    }
+                ],
+                [
+                    {
+                        "text": "❌",
+                        "action": "close",
+                    }
+                ]
+            ]
+        )
+
+    async def rollback_confirm(self, call: InlineCall, number: int):
+        await utils.answer(call, self.strings('rollback_process').format(num=number))
+        await asyncio.create_subprocess_shell(f'git reset --hard HEAD~{number}', stdout=asyncio.subprocess.PIPE)
+        await self.restart_common(call)
+
