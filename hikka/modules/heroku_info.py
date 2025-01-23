@@ -65,6 +65,7 @@ class HerokuInfoMod(loader.Module):
         prefix = f"«<code>{utils.escape_html(self.get_prefix())}</code>»"
 
         platform = utils.get_named_platform()
+        platform_emoji = utils.get_named_platform_emoji()
 
         for emoji, icon in [
             ("🍊", "<emoji document_id=5449599833973203438>🧡</emoji>"),
@@ -85,7 +86,7 @@ class HerokuInfoMod(loader.Module):
             ("🎡", "<emoji document_id=5226711870492126219>🎡</emoji>"),
             ("🐧", "<emoji document_id=5361541227604878624>🐧</emoji>")
         ]:
-            platform = platform.replace(emoji, icon)
+            platform_emoji = platform_emoji.replace(emoji, icon)
         return (
             (
                 "<b>🪐 Heroku</b>\n"
@@ -98,6 +99,7 @@ class HerokuInfoMod(loader.Module):
                 build=build,
                 prefix=prefix,
                 platform=platform,
+                platform_emoji=platform_emoji,
                 upd=upd,
                 uptime=utils.formatted_uptime(),
                 cpu_usage=utils.get_cpu_usage(),
@@ -135,7 +137,7 @@ class HerokuInfoMod(loader.Module):
                         "<emoji document_id=5451646226975955576>⌛️</emoji>",
                         "<emoji document_id=5431449001532594346>⚡️</emoji>",
                         "<emoji document_id=5359785904535774578>💼</emoji>",
-                        platform,
+                        platform_emoji, platform,
                     ),
                 )
             )
