@@ -438,7 +438,7 @@ class UpdaterMod(loader.Module):
             return
         form = await self.inline.form(
             message=message,
-            text=self.strings('rollback_confirm'.format(num=args)),
+            text=self.strings('rollback_confirm').format(num=args),
             reply_markup=[
                 [
                     {
