@@ -376,7 +376,15 @@ updater:
   _cmd_doc_restart: "Restarts the userbot"
   _cmd_doc_source: "Links the source code of this project"
   _cmd_doc_update: "Downloads userbot updates"
-  _cls_doc: "Updates itself"
+  _cls_doc: "Updates itself, tracks latest Heroku releases, and notifies you, if update is required"
+  update_required: "🆕 <b>Heroku Update available!</b>\n\nNew Heroku version released.\n🔮 <b>Heroku <s>{}</s> -> {}</b>\n\n{}"
+  more: "\n<i><b>🎥 And {} more...</b></i>"
+  _cfg_doc_disable_notifications: "Disable update notifications"
+  latest_disabled: "Notifications about the latest update have been suppressed"
+  update: "🔄 Update"
+  ignore: "🚫 Ignore"
+  changelog: '<emoji document_id=5434144690511290129>📰</emoji> <b>Changelog of the last major update:</b><pre><code class="language-heroku">{}</code></pre>'
+
 
 api_protection:
   name: "APILimiter"
