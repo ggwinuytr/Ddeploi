@@ -371,6 +371,7 @@ updater:
   full_success: "<emoji document_id=6028215594707324419>👍</emoji> <b>Userbot is fully loaded! {}</b>\n<i>Full restart took {}s</i>"
   secure_boot_complete: "<emoji document_id=5472308992514464048>🔐</emoji> <b>Secure boot completed! {}</b>\n<i>Restart took {}s</i>"
   invalid_args: "<emoji document_id=5210952531676504517>🚫</emoji> <b>You must provide number of commits to rollback!</b>"
+  rollback_too_far: "<emoji document_id=5210952531676504517>🚫</emoji> <b>You're rolling back too far!</b>"
   rollback_confirm: "❓ <b>Are you sure you want to rollback {num} commit(-s)?</b>"
   _cmd_doc_restart: "Restarts the userbot"
   _cmd_doc_source: "Links the source code of this project"

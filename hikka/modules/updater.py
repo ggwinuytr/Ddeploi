@@ -436,6 +436,9 @@ class UpdaterMod(loader.Module):
         if not (args := utils.get_args_raw(message)).isdigit():
             await utils.answer(message, self.strings('invalid_args'))
             return
+        if int(args) > 10:
+            await utils.answer(message, self.strings('rollback_too_far'))
+            return
         form = await self.inline.form(
             message=message,
             text=self.strings('rollback_confirm').format(num=args),
