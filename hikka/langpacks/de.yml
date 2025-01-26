@@ -345,6 +345,7 @@ updater:
   _cmd_doc_restart: "Startet den Userbot neu"
   _cmd_doc_source: "Zeigt den Link zum Quellcode des Projekts"
   _cmd_doc_update: "Lädt Updates für den Userbot herunter"
+  _cmd_doc_rollback: "Macht Userbot-Updates rückgängig"
   update_required: "🆕 <b>Ein Heroku-Update ist verfügbar!</b>\n\nEine neue Version von Heroku wurde veröffentlicht.\n🔮 <b>Heroku <s>{}</s> -> {}</b>\n\n{}"
   more: "\n<i><b>🎥 Und noch {}...</b></i>"
   _cfg_doc_disable_notifications: "Update-Benachrichtigungen deaktivieren"

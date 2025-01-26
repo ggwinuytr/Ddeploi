@@ -365,6 +365,7 @@ updater:
   _cmd_doc_restart: "Restarts the userbot"
   _cmd_doc_source: "Links the source code of this project"
   _cmd_doc_update: "Downloads userbot updates"
+  _cmd_doc_rollback: "Rollbacks userbot updates"
   _cls_doc: "Updates itself, tracks latest Heroku releases, and notifies you, if update is required"
   update_required: "🆕 <b>Heroku Update available!</b>\n\nNew Heroku version released.\n🔮 <b>Heroku <s>{}</s> -> {}</b>\n\n{}"
   more: "\n<i><b>🎥 And {} more...</b></i>"
