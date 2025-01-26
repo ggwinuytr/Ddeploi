@@ -36,6 +36,7 @@ class UpdaterMod(loader.Module):
     strings = {"name": "Updater"}
 
     def __init__(self):
+        self._notified = None
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "GIT_ORIGIN_URL",
