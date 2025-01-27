@@ -916,6 +916,9 @@ def get_named_platform() -> str:
     if main.IS_DJHOST:
         return "🎡 DJHost"
 
+    if main.IS_JAMHOST:
+        return "🧃 JamHost"
+
     if main.IS_ORACLE:
         return "😶‍🌫️ Oracle"
 
@@ -979,6 +982,9 @@ def get_platform_emoji() -> str:
 
     if main.IS_DJHOST:
         return BASE.format(5116472489639150735)
+    
+    if main.IS_JAMHOST:
+        return BASE.format(5422884965593397853)
 
     if main.IS_USERLAND:
         return BASE.format(5458877818031077824)
