@@ -100,6 +100,7 @@ IS_TOTHOST = "TOTHOST" in os.environ
 IS_AEZA = "aeza" in socket.gethostname()
 IS_DJHOST = "IS_DJHOST" in os.environ
 IS_USERLAND = "userland" in os.environ.get("USER", "")
+IS_JAMHOST = "JAMHOST" in os.environ
 IS_WSL = False
 with contextlib.suppress(Exception):
     from platform import uname
