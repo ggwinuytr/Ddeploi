@@ -1,10 +1,16 @@
 # Heroku Changelog
 ## 🪐 Heroku 1.6.9
 
-- added new variables to info: {os}, {kernel}, {ping}, {cpu}
+- First sex with a designer
 - added banner to ping
 - added config for emoji in config (.cfg herokuconfig)
 - fixed close button in .update
+- added several variables to info ({os}, {kernel}, {cpu}, {ping})
+- added command to rollback updates
+- merged updater & update_notifier and translations
+- added command to change bot token (ch_bot_token)
+- added first official hosting (@jamhost)
+- fixed bug with reply in info
 
 ## 🪐 Heroku 1.6.8
 
