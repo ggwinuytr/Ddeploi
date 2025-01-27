@@ -160,15 +160,21 @@ class HerokuInfoMod(loader.Module):
     @loader.command()
     async def infocmd(self, message: Message):
         start = time.perf_counter_ns()
-        if '{ping}' in self.config["custom_message"]:
+        if self.config["custom_message"] is None:
+            await utils.answer_file(
+                message,
+                self.config["banner_url"],
+                self._render_info(False, start),
+                reply_to=getattr(message, "reply_to_msg_id", None),
+            )
+        elif '{ping}' in self.config["custom_message"]:
             message = await utils.answer(message, self.config["ping_emoji"])
-
-        await utils.answer_file(
-            message,
-            self.config["banner_url"],
-            self._render_info(False, start),
-            reply_to=getattr(message, "reply_to_msg_id", None),
-        )
+            await utils.answer_file(
+                message,
+                self.config["banner_url"],
+                self._render_info(False, start),
+                reply_to=getattr(message, "reply_to_msg_id", None),
+            )
 
     @loader.command()
     async def herokuinfo(self, message: Message):
