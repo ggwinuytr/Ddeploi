@@ -435,7 +435,7 @@ class UpdaterMod(loader.Module):
                     folder_id,
                     DialogFilter(
                         folder_id,
-                        title="hikka",
+                        title="heroku",
                         pinned_peers=(
                             [
                                 await self._client.get_input_entity(
@@ -464,7 +464,7 @@ class UpdaterMod(loader.Module):
                             and (
                                 dialog.entity.participants_count == 1
                                 or dialog.entity.participants_count == 2
-                                and dialog.name in {"hikka-logs", "silent-tags"}
+                                and dialog.name in {"heroku-logs", "silent-tags"}
                             )
                             or (
                                 self._client.loader.inline.init_complete
@@ -473,9 +473,8 @@ class UpdaterMod(loader.Module):
                             )
                             or dialog.entity.id
                             in [
-                                1554874075,
-                                1697279580,
-                                1679998924,
+                                2445389036,
+                                2341345589,
                                 2410964167,
                             ]  # official heroku chats
                         ],
