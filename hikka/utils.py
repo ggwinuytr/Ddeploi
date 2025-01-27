@@ -984,7 +984,7 @@ def get_platform_emoji() -> str:
         return BASE.format(5116472489639150735)
     
     if main.IS_JAMHOST:
-        return BASE.format(5422884965593397853)
+        return BASE.format(5242536621659678947)
 
     if main.IS_USERLAND:
         return BASE.format(5458877818031077824)
