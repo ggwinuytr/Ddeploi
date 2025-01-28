@@ -3,6 +3,7 @@
 # 🌐 https://github.com/hikariatama/Hikka
 # You can redistribute it and/or modify it under the terms of the GNU AGPLv3
 # 🔑 https://www.gnu.org/licenses/agpl-3.0.html
+import getpass
 
 import git
 import time
@@ -115,7 +116,7 @@ class HerokuInfoMod(loader.Module):
                 ram_usage=f"{utils.get_ram_usage()} MB",
                 branch=version.branch,
                 hostname=lib_platform.node(),
-                user=subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode().strip(),
+                user=getpass.getuser(),
                 os=self._get_os_name() or self.strings('non_detectable'),
                 kernel=lib_platform.release(),
                 cpu=f"{psutil.cpu_count(logical=False)} ({psutil.cpu_count()}) core(-s); {psutil.cpu_percent()}% total",
