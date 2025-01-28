@@ -11,8 +11,8 @@ import psutil
 from hikkatl.tl.types import Message
 from hikkatl.utils import get_display_name
 from .. import loader, utils, version
-import subprocess
 import platform as lib_platform
+import getpass
 
 @loader.tds
 class HerokuInfoMod(loader.Module):
@@ -115,7 +115,7 @@ class HerokuInfoMod(loader.Module):
                 ram_usage=f"{utils.get_ram_usage()} MB",
                 branch=version.branch,
                 hostname=lib_platform.node(),
-                user=subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode().strip(),
+                user=getpass.getuser(),
                 os=self._get_os_name() or self.strings('non_detectable'),
                 kernel=lib_platform.release(),
                 cpu=f"{psutil.cpu_count(logical=False)} ({psutil.cpu_count()}) core(-s); {psutil.cpu_percent()}% total",
