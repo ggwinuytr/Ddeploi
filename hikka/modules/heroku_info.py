@@ -175,6 +175,13 @@ class HerokuInfoMod(loader.Module):
                 self._render_info(False, start),
                 reply_to=getattr(message, "reply_to_msg_id", None),
             )
+        else:
+            await utils.answer_file(
+                message,
+                self.config["banner_url"],
+                self.config["custom_message"],
+                reply_to=getattr(message, "reply_to_msg_id", None),
+            )
 
     @loader.command()
     async def herokuinfo(self, message: Message):
