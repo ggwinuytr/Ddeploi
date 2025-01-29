@@ -179,7 +179,7 @@ class HerokuInfoMod(loader.Module):
             await utils.answer_file(
                 message,
                 self.config["banner_url"],
-                self.config["custom_message"],
+                self._render_info(False, start),
                 reply_to=getattr(message, "reply_to_msg_id", None),
             )
 
