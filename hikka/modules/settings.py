@@ -290,9 +290,24 @@ class CoreMod(loader.Module):
     async def installationcmd(self, message: Message):
         """| Guide of installation"""
 
-        await self.client.send_file(
-            message.peer_id,
-            "https://imgur.com/a/HrrFair.png",
-            caption=self.strings["installation"].format('{}', prefix=self.get_prefix()), reply_to=getattr(message, "reply_to_msg_id", None),)
-    
+        args = utils.get_args_raw(message)
+
+        if not args:
+            await self.client.send_file(
+                message.peer_id,
+                "https://imgur.com/a/HrrFair.png",
+                caption=self.strings["installation"], reply_to=getattr(message, "reply_to_msg_id", None),)
+        elif "-t" in args:
+            await utils.answer(message, self.strings["termux_install"])
+        elif "-v" in args:
+            await utils.answer(message, self.strings["vds_install"])
+        elif "-r" in args:
+            await utils.answer(message, self.strings["railway_install"])
+        elif "-jh" in args:
+            await utils.answer(message, self.strings["jamhost_install"])
+        elif "-ms" in args:
+            await utils.answer(message, self.strings["module_switch"])
+        elif "-u" in args:
+            await utils.answer(message, self.strings["userland_install"])
+
         await message.delete()
