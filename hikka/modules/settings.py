@@ -292,7 +292,9 @@ class CoreMod(loader.Module):
 
         args = utils.get_args_raw(message)
 
-        if not args:
+        if not args and not self.inline.form(
+            self.strings("choose_installation")
+        ):
             await self.client.send_file(
                 message.peer_id,
                 "https://imgur.com/a/HrrFair.png",
@@ -309,5 +311,3 @@ class CoreMod(loader.Module):
             await utils.answer(message, self.strings["module_switch"])
         elif "-u" in args:
             await utils.answer(message, self.strings["userland_install"])
-
-        await message.delete()
