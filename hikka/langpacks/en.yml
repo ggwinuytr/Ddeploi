@@ -229,7 +229,6 @@ presets:
 
 settings:
   name: "Settings"
-    'jamhost', 'module_switch', 'userland' }
   termux: "🕶 Termux"
   vds: "💎 VDS"
   railway: "🚂 Railway"
