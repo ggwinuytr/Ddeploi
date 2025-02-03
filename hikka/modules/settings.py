@@ -307,7 +307,7 @@ class CoreMod(loader.Module):
         args = utils.get_args_raw(message)
 
         if (not args or args not in {'-t', '-v', '-r', '-jh', '-ms', '-u'}) and \
-            (not self.inline.form(
+            not (await self.inline.form(
                 self.strings("choose_installation"),
                 message,
                 reply_markup=self._markup,
