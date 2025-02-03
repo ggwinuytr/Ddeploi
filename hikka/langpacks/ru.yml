@@ -148,7 +148,7 @@ heroku_settings:
   _cmd_doc_nonickuser: "Включить NoNick для определенного пользователя"
   _cmd_doc_nonickusers: "Показать список активных NoNick пользователей"
   _cmd_doc_settings: "Показать настройки"
-  _cmd_doc_uninstall_hikka: "Удалить Heroku"
+  _cmd_doc_uninstall_heroku: "Удалить Heroku"
   _cmd_doc_watcherbl: "<module> - Включить/выключить смотрителя в текущем чате"
   _cmd_doc_watcher: "<модуль> - Управление глобальными правилами смотрителя\nАргументы:\n[-c - только в чатах]\n[-p - только в лс]\n[-o - только исходящие]\n[-i - только входящие]"
   _cmd_doc_watchers: "Показать активные смотрители"
