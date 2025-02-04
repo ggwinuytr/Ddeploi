@@ -45,6 +45,20 @@ class CoreMod(loader.Module):
                 ),
         )
 
+    async def client_ready(self):
+        self._markup = utils.chunks(
+            [
+                {
+                    "text": self.strings(platform),
+                    "callback": self._inline__choose__installation,
+                    "args": (platform,),
+                }
+                for platform in {'termux', 'vds', 'railway',
+                                 'jamhost', 'module_switch', 'userland'}
+            ],
+            2
+        )
+
     def _process_config_changes(self):
         # option is controlled by user only
         # it's not a RCE
@@ -292,7 +306,15 @@ class CoreMod(loader.Module):
 
         args = utils.get_args_raw(message)
 
-        if not args:
+        if (not args or args not in {'-t', '-v', '-r', '-jh', '-ms', '-u'}) and \
+            not (await self.inline.form(
+                self.strings("choose_installation"),
+                message,
+                reply_markup=self._markup,
+                photo="https://imgur.com/a/HrrFair.png"
+        )
+            ):
+
             await self.client.send_file(
                 message.peer_id,
                 "https://imgur.com/a/HrrFair.png",
@@ -306,8 +328,13 @@ class CoreMod(loader.Module):
         elif "-jh" in args:
             await utils.answer(message, self.strings["jamhost_install"])
         elif "-ms" in args:
-            await utils.answer(message, self.strings["module_switch"])
+            await utils.answer(message, self.strings["module_switch_install"])
         elif "-u" in args:
             await utils.answer(message, self.strings["userland_install"])
 
-        await message.delete()
+    async def _inline__choose__installation(self, call: InlineCall, platform: str):
+        await call.edit(
+            text=self.strings(f'{platform}_install'),
+            reply_markup=self._markup,
+        )
+

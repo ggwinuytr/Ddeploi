@@ -130,7 +130,7 @@ class UpdaterMod(loader.Module):
                 )
 
     @loader.callback_handler()
-    async def update(self, call: InlineCall):
+    async def update_call(self, call: InlineCall):
         """Process update buttons clicks"""
         if call.data not in {"heroku/update", "heroku/ignore_upd"}:
             return
