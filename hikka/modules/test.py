@@ -3,7 +3,8 @@
 # 🌐 https://github.com/hikariatama/Hikka
 # You can redistribute it and/or modify it under the terms of the GNU AGPLv3
 # 🔑 https://www.gnu.org/licenses/agpl-3.0.html
-
+import getpass
+import platform as lib_platform
 import inspect
 import logging
 import os
@@ -380,8 +381,8 @@ class TestMod(loader.Module):
                     ping_hint=(
                         (self.config["hint"]) if random.choice([0, 0, 1]) == 1 else ""
                     ),
-                    hostname=subprocess.run(['hostname'], stdout=subprocess.PIPE).stdout.decode().strip(),
-                    user=subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode().strip(),
+                    hostname=lib_platform.node(),
+                    user=getpass.getuser(),
         ),
                 reply_to=getattr(message, "reply_to_msg_id", None),
             )
