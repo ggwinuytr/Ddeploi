@@ -376,6 +376,7 @@ updater:
   invalid_args: "<emoji document_id=5210952531676504517>🚫</emoji> <b>You must provide number of commits to rollback!</b>"
   rollback_too_far: "<emoji document_id=5210952531676504517>🚫</emoji> <b>You're rolling back too far!</b>"
   rollback_confirm: "❓ <b>Are you sure you want to rollback {num} commit(-s)?</b>"
+  rollback_process: "🕗 <b>Rolling {num} commits back...</b>"
   _cmd_doc_restart: "Restarts the userbot"
   _cmd_doc_source: "Links the source code of this project"
   _cmd_doc_update: "Downloads userbot updates"
