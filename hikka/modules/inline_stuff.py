@@ -7,9 +7,9 @@
 import re
 import string
 
-from hikkatl.errors.rpcerrorlist import YouBlockedUserError
-from hikkatl.tl.functions.contacts import UnblockRequest
-from hikkatl.tl.types import Message
+from herokutl.errors.rpcerrorlist import YouBlockedUserError
+from herokutl.tl.functions.contacts import UnblockRequest
+from herokutl.tl.types import Message
 
 from .. import loader, utils
 from ..inline.types import BotInlineMessage
