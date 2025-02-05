@@ -20,8 +20,8 @@ except ImportError as e:
 
 import typing
 
-from hikkatl.errors.rpcerrorlist import ChannelsTooMuchError
-from hikkatl.tl.types import Message, User
+from herokutl.errors.rpcerrorlist import ChannelsTooMuchError
+from herokutl.tl.types import Message, User
 
 from . import main, utils
 from .pointers import (

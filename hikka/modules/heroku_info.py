@@ -8,8 +8,8 @@ import git
 import time
 
 import psutil
-from hikkatl.tl.types import Message
-from hikkatl.utils import get_display_name
+from herokutl.tl.types import Message
+from herokutl.utils import get_display_name
 from .. import loader, utils, version
 import platform as lib_platform
 import getpass
