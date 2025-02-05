@@ -26,10 +26,10 @@ import logging
 import time
 import typing
 
-from hikkatl.hints import EntityLike
-from hikkatl.tl.functions.messages import GetFullChatRequest
-from hikkatl.tl.types import ChatParticipantAdmin, ChatParticipantCreator, Message
-from hikkatl.utils import get_display_name
+from herokutl.hints import EntityLike
+from herokutl.tl.functions.messages import GetFullChatRequest
+from herokutl.tl.types import ChatParticipantAdmin, ChatParticipantCreator, Message
+from herokutl.utils import get_display_name
 
 from . import main, utils
 from .database import Database

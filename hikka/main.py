@@ -41,9 +41,9 @@ import typing
 from getpass import getpass
 from pathlib import Path
 
-import hikkatl
-from hikkatl import events
-from hikkatl.errors import (
+import herokutl
+from herokutl import events
+from herokutl.errors import (
     ApiIdInvalidError,
     AuthKeyDuplicatedError,
     FloodWaitError,
@@ -51,14 +51,14 @@ from hikkatl.errors import (
     PhoneNumberInvalidError,
     SessionPasswordNeededError,
 )
-from hikkatl.network.connection import (
+from herokutl.network.connection import (
     ConnectionTcpFull,
     ConnectionTcpMTProxyRandomizedIntermediate,
 )
-from hikkatl.password import compute_check
-from hikkatl.sessions import MemorySession, SQLiteSession
-from hikkatl.tl.functions.account import GetPasswordRequest
-from hikkatl.tl.functions.auth import CheckPasswordRequest
+from herokutl.password import compute_check
+from herokutl.sessions import MemorySession, SQLiteSession
+from herokutl.tl.functions.account import GetPasswordRequest
+from herokutl.tl.functions.auth import CheckPasswordRequest
 
 from . import database, loader, utils, version
 from ._internal import print_banner, restart
@@ -978,6 +978,6 @@ class Hikka:
         self.loop.close()
 
 
-hikkatl.extensions.html.CUSTOM_EMOJIS = not get_config_key("disable_custom_emojis")
+herokutl.extensions.html.CUSTOM_EMOJIS = not get_config_key("disable_custom_emojis")
 
 hikka = Hikka()
