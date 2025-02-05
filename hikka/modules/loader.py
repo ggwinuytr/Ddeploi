@@ -27,9 +27,9 @@ from importlib.machinery import ModuleSpec
 from urllib.parse import urlparse
 
 import requests
-from hikkatl.errors.rpcerrorlist import MediaCaptionTooLongError
-from hikkatl.tl.functions.channels import JoinChannelRequest
-from hikkatl.tl.types import Channel, Message, PeerUser
+from herokutl.errors.rpcerrorlist import MediaCaptionTooLongError
+from herokutl.tl.functions.channels import JoinChannelRequest
+from herokutl.tl.types import Channel, Message, PeerUser
 
 from .. import loader, main, utils
 from .._local_storage import RemoteStorage
@@ -620,7 +620,7 @@ class LoaderMod(loader.Module):
                         {
                             "sklearn": "scikit-learn",
                             "pil": "Pillow",
-                            "hikkatl": "Hikka-TL-New",
+                            "herokutl": "Hikka-TL-New",
                         }.get(e.name.lower(), e.name)
                     ]
 

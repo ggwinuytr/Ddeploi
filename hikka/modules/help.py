@@ -9,8 +9,8 @@ import difflib
 import inspect
 import logging
 
-from hikkatl.extensions.html import CUSTOM_EMOJIS
-from hikkatl.tl.types import Message
+from herokutl.extensions.html import CUSTOM_EMOJIS
+from herokutl.tl.types import Message
 
 from .. import loader, utils
 

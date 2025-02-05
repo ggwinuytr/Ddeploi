@@ -14,7 +14,7 @@ import time
 import typing
 from io import BytesIO
 
-from hikkatl.tl.types import Message
+from herokutl.tl.types import Message
 
 from .. import loader, main, utils
 from ..inline.types import InlineCall
