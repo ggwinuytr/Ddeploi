@@ -53,8 +53,9 @@ class CoreMod(loader.Module):
                     "callback": self._inline__choose__installation,
                     "args": (platform,),
                 }
-                for platform in {'termux', 'vds', 'railway',
-                                 'jamhost', 'module_switch', 'userland'}
+                for platform in ['vds', 'termux',
+                                 'userland', 'railway',
+                                 'jamhost', 'module_switch']
             ],
             2
         )
@@ -311,7 +312,8 @@ class CoreMod(loader.Module):
                 self.strings("choose_installation"),
                 message,
                 reply_markup=self._markup,
-                photo="https://imgur.com/a/HrrFair.png"
+                photo="https://imgur.com/a/HrrFair.png",
+                force_me=False
         )
             ):
 
