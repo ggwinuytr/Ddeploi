@@ -313,7 +313,7 @@ class CoreMod(loader.Module):
                 message,
                 reply_markup=self._markup,
                 photo="https://imgur.com/a/HrrFair.png",
-                force_me=False
+                disable_security=True
         )
             ):
 
