@@ -21,6 +21,7 @@ from logging.handlers import RotatingFileHandler
 
 import herokutl
 from aiogram.utils.exceptions import NetworkError
+from herokutl.errors import PersistentTimestampOutdatedError
 
 from . import utils
 from .tl_cache import CustomTelegramClient
@@ -66,9 +67,9 @@ linecache.getlines = getlines
 
 def override_text(exception: Exception) -> typing.Optional[str]:
     """Returns error-specific description if available, else `None`"""
-    if isinstance(exception, NetworkError):
+    if isinstance(exception, (NetworkError, asyncio.exceptions.TimeoutError)):
         return "✈️ <b>You have problems with internet connection on your server.</b>"
-    if 'Telegram is having internal issues' in str(exception):
+    elif isinstance(exception, PersistentTimestampOutdatedError):
         return "✈️ <b>Telegram has problems with their datacenters.</b>"
 
     return None
