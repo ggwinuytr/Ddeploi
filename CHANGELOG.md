@@ -11,6 +11,10 @@
 - added command to change bot token (ch_bot_token)
 - added first official hosting (@jamhost)
 - fixed bug with reply in info
+- fixed bug with non-working .ping and .info on arch linux
+- updated .installation command
+- Telethon has been completely updated, moving to heroku-tl
+- new website: heroku.codrago.top
 
 ## 🪐 Heroku 1.6.8
 
