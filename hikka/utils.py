@@ -931,9 +931,6 @@ def get_named_platform() -> str:
     if main.IS_SERV00:
         return "💎 Serv00"
 
-    if main.IS_TOTHOST:
-        return f"💘 ToTHost {os.environ['TOTHOST_RATE']}"
-
     if main.IS_AEZA:
         return "🛡 Aeza"
 
@@ -973,9 +970,6 @@ def get_platform_emoji() -> str:
             "<emoji document_id=5350822883314655367>🪐</emoji>",
         )
     )
-
-    if main.IS_TOTHOST:
-        return BASE.format(5372887118156683469)
 
     if main.IS_HIKKAHOST:
         return BASE.format(5395745114494624362)
