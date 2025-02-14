@@ -96,7 +96,6 @@ IS_HIKKAHOST = "HIKKAHOST" in os.environ
 IS_ORACLE = "ORACLE_OS" in os.environ
 IS_AWS = "AWS_OS" in os.environ
 IS_SERV00 = "serv00" in socket.gethostname()
-IS_TOTHOST = "TOTHOST" in os.environ
 IS_AEZA = "aeza" in socket.gethostname()
 IS_DJHOST = "IS_DJHOST" in os.environ
 IS_USERLAND = "userland" in os.environ.get("USER", "")
